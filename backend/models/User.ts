@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 export const UserSchema = new Schema({
     handle: {
-        name: String,
+        type: String,
         unique: true,
         index: true,
-        required: 'Name is required'
+        required: 'Handle is required'
     },
     password: {
         type: String,

@@ -23,7 +23,7 @@ const ListingSchema = new Schema({
     },
     isClaimed: {
         type: Boolean,
-        required: 'Claimed status required.'
+        default: false,
     },
     claimedBy: {
         type: mongoose.Schema.Types.ObjectId,

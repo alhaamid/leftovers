@@ -8,12 +8,9 @@ import { MongoError } from "mongodb";
 const APP = express();
 const PORT = process.env.PORT || 4201;
 
-const DB_NAME: string = '/grudy';
-// const CLOUD_MONGO_URL: string = ``;
-// const DB_URI: string = CLOUD_MONGO_URL;
-
-const MONGO_URI: string = 'mongodb://127.0.0.1:27017'
-const DB_URI: string = MONGO_URI + DB_NAME;
+const DB_NAME: string = 'leftovers';
+const CLOUD_MONGO_URL: string = `mongodb+srv://haamid:haamid@leftovers-pre0a.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
+const DB_URI: string = CLOUD_MONGO_URL;
 
 mongoose.connect(DB_URI, (err: MongoError) => {
     if (err) {console.log(`Mongoose connect err: ${err.message}`);} 
