@@ -9,10 +9,6 @@ const ListingSchema = new Schema({
     description: {
         type: String,
     },
-    condition: {
-        type: String,
-        required: 'Condition is required.'
-    },
     images: {
         type: [String]
     },
