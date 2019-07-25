@@ -1,43 +1,57 @@
 import React from 'react';
-// import classNames from 'classnames';
+import findController from '../../services/findController';
 import Listing from '../Listing/Listing';
 import SearchBar from './SearchBar/SearchBar';
 import './SearchListing.css';
 
-function getAllListings() {
-  return [
-    {
-      imageUrl: "airpods.jpeg",
-      location: "8F",
-      title: "airpods",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.",
-    },
-    {
-      imageUrl: "https://images-na.ssl-images-amazon.com/images/I/51z376z5iBL._SL1200_.jpg",
-      location: "8F",
-      title: "airpods",
-      description: "These are MY headphones!",
-    },
-  ]
-}
-
 class SearchListing extends React.Component {
-  allListings = [];
 
   constructor (props) {
     super(props);
-    this.allListings = getAllListings();
+    this.search = this.search.bind(this);
+
+    this.findController = new findController();
+
+    this.state = {
+      allListings: [],
+    };
+
+    this.refreshListings();
+  }
+
+  refreshListings () {
+    this.findController.getAvailableListings()
+    .then(listings => {
+      this.setState({
+        allListings: listings,
+      })
+    })
+  }
+
+  componentDidMount () {
+    this.refreshListings();
+  }
+
+  search (query) {
+    if (query == '') {
+      this.refreshListings();
+    } else {
+        this.setState({
+          allListings: this.findController.search(query)
+        });
+    }
   }
 
   render () {
     return (
       <div className="page-container">
         <div className="search-bar">
-          <SearchBar />
+          <SearchBar search={this.search} />
         </div>
   
-        {this.allListings.map((listing, index) => {
-          return <Listing 
+        {this.state.allListings.map((listing, index) => {
+          return <Listing
+            key={index}
             imageUrl={listing.imageUrl}
             title={listing.title}
             location={listing.location}

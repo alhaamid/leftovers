@@ -46,7 +46,7 @@ class Listing extends React.Component {
                 <Typography gutterBottom variant="h5">
                   {this.props.title}
                 </Typography>
-                <Typography component="p" color="textSecondary">
+                <Typography component="p">
                   Location: {this.props.location}
                 </Typography>
                 <Typography component="p" color="textSecondary">
@@ -57,6 +57,8 @@ class Listing extends React.Component {
           </Card>
         </div>
       </div>
+
+      
 
       // <Card className="yp-card">
       //   <CardActionArea>
