@@ -102,9 +102,6 @@ export default class PostListing extends React.Component {
     var object = {};
     data.forEach((value, key) => {object[key] = value});
     var formData = JSON.stringify(object);
-
-    // console.log('json = ' + formData)
-
     
     fetch(this.postRoute, {
       method: 'POST',
