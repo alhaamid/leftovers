@@ -7,21 +7,35 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import './SearchBar.css';
 
-function SearchBar (props) {
-    return (
-        <div>
-            <Paper className="root">
-                <InputBase
-                    className="input"
-                    placeholder="Search Lost and Found"
-                />
-                <IconButton className="iconButton" aria-label="search">
-                    <SearchIcon />
-                </IconButton>
-                {/* <Divider className="divider" /> */}
-            </Paper>
-        </div>
-    )
+class SearchBar extends React.Component {
+    constructor (props) {
+        super(props);
+    }
+
+    enterPressed (event) {
+        const code = event.keyCode || event.which;
+        const searchQuery = event.target.value;
+        if(code === 13 && searchQuery != '') { 
+            this.props.onSearch(searchQuery);
+        } 
+    }
+    
+    render () {
+        return (
+            <div>
+                <Paper className="root">
+                    <InputBase
+                        className="input"
+                        placeholder="Search Lost and Found"
+                        onKeyPress={this.enterPressed.bind(this)}
+                    />
+                    <IconButton className="iconButton" aria-label="search">
+                        <SearchIcon />
+                    </IconButton>
+                </Paper>
+            </div>
+        )
+    }
 }
 
 export default SearchBar;
