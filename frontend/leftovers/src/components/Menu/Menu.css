@@ -1,0 +1,121 @@
+* {
+  /* border: 1px solid black; */
+}
+
+a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+#header {
+  width: 100%;
+
+  display: table;
+  
+  color: white;
+  background: #d32323;
+}
+
+#titleContainer {
+  width: 40%;
+  height: inherit;
+
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#navbarContainer {
+  /* background: purple; */
+  width: 60%;
+  height: inherit;
+  
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#titleContent {
+  float: left;
+  margin-left: 50px;
+}
+
+#titleContent h2 {
+  text-transform: uppercase;
+  font-family: 'Roboto';
+}
+
+#navbarContent {
+  float: right;
+}
+
+.linkBox {
+  float: right;
+  margin-right: 50px;
+
+  display: table;
+
+}
+
+/* 
+
+.linkBox a i {
+  width: fit-content;
+  height: fit-content;
+
+  display: table-cell;
+  vertical-align: middle;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.linkBox:hover {
+  background-color: var(--hover-color);
+}
+
+.linkBox:hover a i {
+  transform: scale(1.2);
+}
+
+.active {
+  background-color: var(--hover-color);
+} */
+
+
+
+
+
+
+
+
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
