@@ -77,7 +77,6 @@ export class ListingController {
     public searchListings(searchQuery: string) {
         return new promise<Result>((resolve, reject) => {
             console.log(`searchQuery = ${searchQuery}`)
-            let words = searchQuery.split(" ");
 
             this.Listing.find({$text: {$search: searchQuery}})
             .exec((err, docs) => {

@@ -1,0 +1,39 @@
+.listing {
+    width: 100%;
+
+    display: table;
+
+    margin-bottom: 30px;
+    
+    /* color: white;
+    background: #d32323; */
+}
+
+.image-container {
+    width: 20%;
+    height: max-content;
+
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.description-container {
+    width: 80%;
+    max-height: 300px;
+    
+    display: table-cell;
+}
+
+.yp-card {
+    width: 100%;
+    min-height: 245px;
+    max-height: 245px;
+    border-right: 0px solid;
+    /* margin-bottom: 20px; */
+}
+
+.yp-image {
+    max-width: 200px;
+    max-height: 300px;
+    object-fit: cover;
+}

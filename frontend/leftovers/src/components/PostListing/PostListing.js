@@ -1,11 +1,16 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 import './PostListing.css';
 
 function PostListing() {
   return (
     
-    <h3>Post</h3>
-    // <Button></Button>
+    <div>
+      <h3>Post</h3>
+      <Button variant="contained" color="primary">
+        Post
+      </Button>
+    </div>
     
   );
 }
