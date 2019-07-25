@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { red } from '@material-ui/core/colors';
+import axios from 'axios';
 
 import './PostListing.css';
 
@@ -101,22 +102,21 @@ export default class PostListing extends React.Component {
 
     var object = {};
     data.forEach((value, key) => {object[key] = value});
-    var formData = JSON.stringify(object);
-    
-    fetch(this.postRoute, {
-      method: 'POST',
-      body: formData,
-    });
+    axios.post(this.postRoute,  object )
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+      alert('Posted!')
+    })
+
   }
 
   render() {
     return (
+      <div className="page-container">
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={this.classes.paper}>
-          <Avatar className={this.classes.avatar}>
-            <AddCircleOutlineOutlined />
-          </Avatar>
           <Typography component="h1" variant="h5">
             Post a New Listing
           </Typography>
@@ -178,6 +178,7 @@ export default class PostListing extends React.Component {
           </form>
         </div>
       </Container>
+      </div>
     );
   }
 };
