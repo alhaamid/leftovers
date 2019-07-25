@@ -15,8 +15,8 @@ class SearchBar extends React.Component {
     enterPressed (event) {
         const code = event.keyCode || event.which;
         const searchQuery = event.target.value;
-        if(code === 13 && searchQuery != '') { 
-            this.props.onSearch(searchQuery);
+        if(code === 13) { 
+            this.props.search(searchQuery);
         } 
     }
     

@@ -57,7 +57,6 @@ export class UserController {
 
     public getAUser(handle: string, veil: boolean) {
         return new promise<Result>((resolve, reject) => {
-            console.log(`handle = ${handle} `);
             let condition = { handle: { $eq: handle } };
             this.User.findOne(condition, (err, user) => {
                 if (err) {

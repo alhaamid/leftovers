@@ -8,9 +8,15 @@ const ListingSchema = new Schema({
     },
     description: {
         type: String,
+        default: 'description',
     },
-    images: {
-        type: [String]
+    location: {
+        type: String,
+        default: 'Yelp',
+    },
+    imageUrl: {
+        type: String,
+        default: 'https://images-na.ssl-images-amazon.com/images/I/51z376z5iBL._SL1200_.jpg',
     },
     dateCreated: {
         type: Date,
@@ -29,7 +35,8 @@ const ListingSchema = new Schema({
 
 ListingSchema.index({
     title: 'text',
-    description: 'text'
+    description: 'text',
+    location: 'text',
 });
 
 export {ListingSchema};
