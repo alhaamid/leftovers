@@ -8,8 +8,6 @@ export class ListingController {
     constructor() {}
 
     public createNewListing(listingJSON) {
-        console.log('listingJson ' + listingJSON)
-
         let newListing = new this.Listing(listingJSON);
         return new promise <Result>((resolve, reject) => {
             newListing.save((err, listing) => {

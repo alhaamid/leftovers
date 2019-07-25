@@ -37,8 +37,6 @@ routes.route('/user/:handle')
 
 routes.route('/listing')
 .post((req, res) => {
-    console.log('req = ' + req)
-    console.log('Receivied the following from the frontend: ' + req.body)
     listingController.createNewListing(req.body)
     .then(obj => {res.status(obj["code"]).send(obj["result"]);})
     .catch(obj => {res.status(obj["code"]).send(obj["result"]);})
