@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
+// import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -21,6 +21,7 @@ export default class PostListing extends React.Component {
       selectedFile: '',
     }
 
+    /*
     this.classes = makeStyles(theme => ({
       paper: {
         marginTop: theme.spacing(8),
@@ -47,6 +48,7 @@ export default class PostListing extends React.Component {
         },
       },
     }));
+    */
 
     this.findController = new findController();
 
@@ -103,12 +105,13 @@ export default class PostListing extends React.Component {
     return (
       <div className="page-container">
         <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <div className={this.classes.paper}>
+          {/* <div className={this.classes.paper}> */}
+          <div>
             <Typography component="h1" variant="h5">
               Post a New Listing
           </Typography>
-            <form className={this.classes.form} onSubmit={this.handleSubmit}>
+            {/* <form className={this.classes.form} onSubmit={this.handleSubmit}> */}
+            <form onSubmit={this.handleSubmit}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12}>
                   <TextField
@@ -137,7 +140,6 @@ export default class PostListing extends React.Component {
                 <Grid item xs={12} sm={12}>
                   <input
                     accept="image/*"
-                    // className={classes.input}
                     style={{ display: 'none' }}
                     id="raised-button-file"
                     multiple
@@ -161,7 +163,7 @@ export default class PostListing extends React.Component {
                 fullWidth
                 variant="contained"
                 color="primary"
-                className={this.classes.post_button}
+                // className={this.classes.post_button}
               >
                 Post
             </Button>
