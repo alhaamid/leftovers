@@ -89,8 +89,8 @@ export default class PostListing extends React.Component {
     this.uploadFile()
     .then(url => {
       var object = {imageUrl: url};
+      
       data.forEach((value, key) => { object[key] = value });
-
       this.findController.postListing(object)
         .then(newListing => {
           alert('Posted!!')
@@ -98,6 +98,12 @@ export default class PostListing extends React.Component {
     })
     .catch(err => {
       console.log(err);
+
+      data.forEach((value, key) => { object[key] = value });
+      this.findController.postListing(object)
+        .then(newListing => {
+          alert('Posted!!')
+        })
     })
   }
 

@@ -30,7 +30,11 @@ const ListingSchema = new Schema({
     claimedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    comments: {
+        type: [{type: String}],
+        default: []
+    },
 });
 
 ListingSchema.index({
