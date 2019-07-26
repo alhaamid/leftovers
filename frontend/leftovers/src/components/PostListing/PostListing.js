@@ -15,7 +15,6 @@ import './PostListing.css';
 
 const ColorButton = withStyles(theme => ({
   root: {
-    // color: theme.palette.getContrastText(red[500]),
     backgroundColor: "#d32323",
     '&:hover': {
       backgroundColor: red[900],
@@ -31,11 +30,32 @@ export default class PostListing extends React.Component {
     this.state = {
       selectedFile: '',
       open: false,
+      title: '',
+      description: ''
     }
 
     this.findController = new findController();
 
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleTitleInputChange(event) {
+    this.setState({
+        title: event.target.value
+    })
+  }
+
+  handleDescriptionInputChange(event) {
+    this.setState({
+        description: event.target.value
+    })
+  }
+
+  cleanFormInputFields() {
+      this.setState({
+          title: '',
+          description: '',
+      })
   }
 
   updateFile = event => {
@@ -78,6 +98,7 @@ export default class PostListing extends React.Component {
         this.findController.postListing(object)
           .then(newListing => {
             // alert('Posted!!')
+            this.cleanFormInputFields();
             this.setState({open: true});
           })
       })
@@ -87,17 +108,13 @@ export default class PostListing extends React.Component {
         data.forEach((value, key) => { object[key] = value });
         this.findController.postListing(object)
           .then(newListing => {
-            // alert('Posted!!')
+            this.cleanFormInputFields();
             this.setState({open: true});
           })
       })
   }
 
   handleClose(event, reason) {
-    if (reason === 'clickaway') {
-      return;
-    }
-
     this.setState({open: false});
   }
 
@@ -120,6 +137,8 @@ export default class PostListing extends React.Component {
                     id="title"
                     label="Title"
                     autoFocus
+                    value={this.state.title} 
+                    onChange={this.handleTitleInputChange.bind(this)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12}>
@@ -133,6 +152,8 @@ export default class PostListing extends React.Component {
                     multiline={true}
                     rows={4}
                     rowsMax={8}
+                    value={this.state.description} 
+                    onChange={this.handleDescriptionInputChange.bind(this)}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12}>
