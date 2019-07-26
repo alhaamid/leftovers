@@ -57,6 +57,10 @@ export default class PostListing extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  updateFile (event) {
+    console.log(event.target.files[0]);
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -115,6 +119,7 @@ export default class PostListing extends React.Component {
                     id="raised-button-file"
                     multiple
                     type="file"
+                    onChange={this.updateFile.bind(this)}
                   />
                   <label htmlFor="raised-button-file">
                     <Button
