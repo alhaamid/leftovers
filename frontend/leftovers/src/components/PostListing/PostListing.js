@@ -4,13 +4,23 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { red } from '@material-ui/core/colors';
 import findController from '../../services/findController';
-import {storage} from '../../firebase';
+import { storage } from '../../firebase';
 
 import './PostListing.css';
+
+const ColorButton = withStyles(theme => ({
+  root: {
+    // color: theme.palette.getContrastText(red[500]),
+    backgroundColor: "#d32323",
+    '&:hover': {
+      backgroundColor: red[900],
+    },
+  },
+}))(Button);
 
 export default class PostListing extends React.Component {
 
@@ -20,35 +30,6 @@ export default class PostListing extends React.Component {
     this.state = {
       selectedFile: '',
     }
-
-    /*
-    this.classes = makeStyles(theme => ({
-      paper: {
-        marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      },
-      form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(3),
-      },
-      post_button: {
-        margin: theme.spacing(3, 0, 2),
-        backgroundColor: "#d32323",
-        '&:hover': {
-          backgroundColor: red[900],
-        },
-      },
-      upload_button: {
-        backgroundColor: "#d32323",
-        color: theme.palette.common.white,
-        '&:hover': {
-          backgroundColor: red[900],
-        },
-      },
-    }));
-    */
 
     this.findController = new findController();
 
@@ -63,22 +44,22 @@ export default class PostListing extends React.Component {
   }
 
   uploadFile = () => {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const file = this.state.selectedFile;
       const uploadTask = storage.ref(`images/${file.name}`).put(file);
-      uploadTask.on('state_changed', 
-      (snapshot) => {
-      }, 
-      (error) => {
-        reject(error);
-      }, 
-      (complete) => {
-        storage.ref('images').child(file.name).getDownloadURL()
-        .then(url => {
-          resolve(url);
+      uploadTask.on('state_changed',
+        (snapshot) => {
+        },
+        (error) => {
+          reject(error);
+        },
+        (complete) => {
+          storage.ref('images').child(file.name).getDownloadURL()
+            .then(url => {
+              resolve(url);
+            })
+            .catch(err => reject(err))
         })
-        .catch(err => reject(err))
-      })
     });
   }
 
@@ -88,36 +69,34 @@ export default class PostListing extends React.Component {
     const data = new FormData(form);
     let object = {};
     this.uploadFile()
-    .then(url => {
-      object['imageUrl'] = url;
-      
-      data.forEach((value, key) => { object[key] = value });
-      this.findController.postListing(object)
-        .then(newListing => {
-          alert('Posted!!')
-        })
-    })
-    .catch(err => {
-      console.log(err);
+      .then(url => {
+        object['imageUrl'] = url;
 
-      data.forEach((value, key) => { object[key] = value });
-      this.findController.postListing(object)
-        .then(newListing => {
-          alert('Posted!!')
-        })
-    })
+        data.forEach((value, key) => { object[key] = value });
+        this.findController.postListing(object)
+          .then(newListing => {
+            alert('Posted!!')
+          })
+      })
+      .catch(err => {
+        console.log(err);
+
+        data.forEach((value, key) => { object[key] = value });
+        this.findController.postListing(object)
+          .then(newListing => {
+            alert('Posted!!')
+          })
+      })
   }
 
   render() {
     return (
       <div className="page-container">
         <Container component="main" maxWidth="xs">
-          {/* <div className={this.classes.paper}> */}
           <div>
             <Typography component="h1" variant="h5">
               Post a New Listing
           </Typography>
-            {/* <form className={this.classes.form} onSubmit={this.handleSubmit}> */}
             <form onSubmit={this.handleSubmit}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12}>
@@ -155,24 +134,22 @@ export default class PostListing extends React.Component {
                   />
                   <label htmlFor="raised-button-file">
                     <Button
-                      variant="raised"
+                      variant="contained"
                       component="span"
-                      style={{marginBottom: '15px'}}
+                      color="primary"
+                      style={{ marginBottom: '15px' }}
                     >
                       Upload Image
                   </Button>
                   </label>
                 </Grid>
               </Grid>
-              <Button
+              <ColorButton 
                 type="submit"
                 fullWidth
-                variant="contained"
-                color="primary"
-                // className={this.classes.post_button}
-              >
+                variant="contained" color="primary">
                 Post
-            </Button>
+              </ColorButton>
             </form>
           </div>
         </Container>
