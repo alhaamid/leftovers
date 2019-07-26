@@ -21,6 +21,20 @@ export class ListingController {
         });
     }
 
+    public updateAListing(listingID: string, listingJSON) {
+        let condition = {_id: { $eq: listingID} };
+        return new promise <Result>((resolve, reject) => {
+            this.Listing.findOneAndUpdate(condition, listingJSON, {new: true}, (err, listing) => {
+                if (err) {
+                    console.log('Could not update with document with ID ' + listingID);
+                    reject({code: 500, result: err})
+                } else {
+                    resolve({code: 200, result: listing});
+                }
+            });
+        });
+    }
+
     public getAListing(id: string) {
         return new promise<Result>((resolve, reject) => {
             let condition = {_id: { $eq: id} };
