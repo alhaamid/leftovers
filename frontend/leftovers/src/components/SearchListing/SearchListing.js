@@ -86,6 +86,7 @@ class SearchListing extends React.Component {
               location={listing.location}
               description={listing.description}
               claim={this.claim}
+              comments={listing.comments}
             />
           )
         })}

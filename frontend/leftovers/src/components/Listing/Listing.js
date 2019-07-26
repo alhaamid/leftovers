@@ -77,6 +77,18 @@ class Listing extends React.Component {
               placeholder="Add a comment"
               onKeyPress={this.enterPressed.bind(this)}
             />
+            
+            {this.props.comments.map((comment, index) => {
+              return (
+                <div>
+                  <p
+                    key={index}>
+                    {comment}
+                  </p>
+                </div>
+              )
+            })}
+
           </Card>
         </div>
 
