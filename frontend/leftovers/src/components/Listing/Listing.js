@@ -33,13 +33,6 @@ class Listing extends React.Component {
                 className="yp-image"
               />
             </CardActionArea>
-            <CardActions>
-              <Button size="medium" variant="contained" onClick={this.claim.bind(this)}>
-                <Typography>
-                  Claim
-                </Typography>
-              </Button>
-            </CardActions>
           </Card>
 
         </div>
@@ -59,6 +52,13 @@ class Listing extends React.Component {
                 </Typography>
               </CardContent>
             </CardActionArea>
+            <CardActions>
+              <Button size="medium" variant="contained" onClick={this.claim.bind(this)}>
+                <Typography>
+                  Claim
+                </Typography>
+              </Button>
+            </CardActions>
           </Card>
         </div>
 
