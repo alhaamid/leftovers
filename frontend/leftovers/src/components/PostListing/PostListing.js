@@ -9,6 +9,7 @@ import Container from '@material-ui/core/Container';
 import { red } from '@material-ui/core/colors';
 import findController from '../../services/findController';
 import { storage } from '../../firebase';
+import Snackbar from '@material-ui/core/Snackbar';
 
 import './PostListing.css';
 
@@ -29,6 +30,7 @@ export default class PostListing extends React.Component {
 
     this.state = {
       selectedFile: '',
+      open: false,
     }
 
     this.findController = new findController();
@@ -75,7 +77,8 @@ export default class PostListing extends React.Component {
         data.forEach((value, key) => { object[key] = value });
         this.findController.postListing(object)
           .then(newListing => {
-            alert('Posted!!')
+            // alert('Posted!!')
+            this.setState({open: true});
           })
       })
       .catch(err => {
@@ -84,9 +87,18 @@ export default class PostListing extends React.Component {
         data.forEach((value, key) => { object[key] = value });
         this.findController.postListing(object)
           .then(newListing => {
-            alert('Posted!!')
+            // alert('Posted!!')
+            this.setState({open: true});
           })
       })
+  }
+
+  handleClose(event, reason) {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({open: false});
   }
 
   render() {
@@ -152,6 +164,23 @@ export default class PostListing extends React.Component {
             </form>
           </div>
         </Container>
+
+
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.open}
+          autoHideDuration={4000}
+          onClose={this.handleClose.bind(this)}
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span>Posted</span>}
+
+        />
+
       </div>
     );
   }
