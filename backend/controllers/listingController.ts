@@ -92,7 +92,7 @@ export class ListingController {
         return new promise<Result>((resolve, reject) => {
             console.log(`searchQuery = ${searchQuery}`)
 
-            this.Listing.find({$text: {$search: searchQuery}})
+            this.Listing.find({isClaimed: false, $text: {$search: searchQuery}})
             .exec((err, docs) => {
                 if (err) {
                     console.log('Error while search', err)
