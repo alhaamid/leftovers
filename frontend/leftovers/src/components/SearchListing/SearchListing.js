@@ -65,7 +65,7 @@ class SearchListing extends React.Component {
   sort_by_key (array, key) {
     return array.sort( (a, b) => {
       var x = a[key]; var y = b[key];
-      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+      return ((x < y) ? 1 : ((x > y) ? -1 : 0));
     });
   }
 
