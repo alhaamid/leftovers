@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 const ListingSchema = new Schema({
     title: {
         type: String,
-        required: 'Listing title is required'
+        required: 'Listing title is required',
+        index: true,
     },
     description: {
         type: String,
-        default: 'description',
+        required: 'Description is required',
+        index: true,
     },
     location: {
         type: String,
@@ -40,7 +42,6 @@ const ListingSchema = new Schema({
 ListingSchema.index({
     title: 'text',
     description: 'text',
-    location: 'text',
 });
 
 export {ListingSchema};

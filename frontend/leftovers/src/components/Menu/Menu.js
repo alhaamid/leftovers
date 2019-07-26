@@ -22,11 +22,11 @@ function Menu() {
 
           <div className={classNames('flat')}>
             <div title="Search Listings" className={classNames('linkBox')}>
-              <h2><a href={searchListingUrl}>Search Listings</a></h2>
+              <h2><a href={searchListingUrl}>Search</a></h2>
             </div>
 
             <div title="Post Listing" className={classNames('linkBox')}>
-              <h2><a href={postListingUrl}>Post Listing</a></h2>
+              <h2><a href={postListingUrl}>Post</a></h2>
             </div>
           </div>
 

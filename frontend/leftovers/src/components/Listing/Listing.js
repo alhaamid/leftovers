@@ -10,6 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import InputBase from '@material-ui/core/InputBase';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
+import TextField from '@material-ui/core/TextField';
 
 import './Listing.css';
 
@@ -123,7 +124,7 @@ class Listing extends React.Component {
               Location: {this.props.location}
             </Typography> */}
             <Typography component="p" color="textSecondary">
-              Description: {this.props.description}
+              {this.props.description}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -145,8 +146,9 @@ class Listing extends React.Component {
         {this.props.comments.length > 0 && (
           <div className="comments-section">
             <InputBase
-              placeholder="Add a comment"
+              placeholder="Add a comments"
               onKeyPress={this.enterPressed.bind(this)}
+              fullWidth
             />
             {this.props.comments.map((comment, index) => {
               return (
@@ -164,6 +166,7 @@ class Listing extends React.Component {
             <InputBase
               placeholder="Add a comment"
               onKeyPress={this.enterPressed.bind(this)}
+              fullWidth
             />
             <h5>No comments so far. Be the first to comment.</h5>
           </div>

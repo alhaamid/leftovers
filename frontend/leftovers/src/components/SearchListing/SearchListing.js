@@ -92,7 +92,7 @@ class SearchListing extends React.Component {
           <SearchBar search={this.search} />
         </div>
   
-        {this.state.allListings.map((listing, index) => {
+        {this.state.allListings.length > 0 && (this.state.allListings.map((listing, index) => {
           return (
             <Listing
               key={index}
@@ -106,7 +106,13 @@ class SearchListing extends React.Component {
               post_comment={this.post_comment}
             />
           )
-        })}
+        }))}
+
+        {this.state.allListings.length == 0 && (
+          <h2>
+            No available listings
+          </h2>
+        )}
       </div>
     );
   }

@@ -63,7 +63,7 @@ a {
   margin-right: 50px;
 
   display: table;
-
+  height: inherit;
 }
 
 /* 
