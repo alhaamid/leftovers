@@ -34,6 +34,16 @@ class findController {
             .catch(rej => reject(rej))
         });
     }
+
+    putListing(listingID, listingJSON) {
+        const url = `${this.backendUrl}/listing/${listingID}`
+        return new Promise((resolve, reject) => {
+            axios.put(url, listingJSON)
+            .then(res => { resolve(res.daata) })
+            .catch(rej => reject(rej))
+        });
+    }
+
 }
 
 export default findController;
