@@ -26,10 +26,9 @@ class Listing extends React.Component {
     const code = event.keyCode || event.which;
     const comment = event.target.value;
     if (code === 13) {
-      //TODO
-      
       if (comment.length > 0) {
         console.log(comment);
+        this.props.post_comment(this.props._id, this.props.comments, comment);
       }
     }
   }
@@ -52,49 +51,50 @@ class Listing extends React.Component {
 
       //   </div>
 
-      //   <div className="description-container">
-      //     <Card className="yp-card">
-      //       <CardActionArea>
-      //         <CardContent>
-      //           <Typography gutterBottom variant="h5">
-      //             {this.props.title}
-      //           </Typography>
-      //           <Typography component="p">
-      //             Location: {this.props.location}
-      //           </Typography>
-      //           <Typography component="p" color="textSecondary">
-      //             Description: {this.props.description}
-      //           </Typography>
-      //         </CardContent>
-      //       </CardActionArea>
-      //       <CardActions>
-      //         <Button size="medium" variant="contained" onClick={this.claim.bind(this)}>
-      //           <Typography>
-      //             Claim
-      //           </Typography>
-      //         </Button>
-      //       </CardActions>
-      //       <InputBase
-      //         placeholder="Add a comment"
-      //         onKeyPress={this.enterPressed.bind(this)}
-      //       />
-            
-      //       {this.props.comments.map((comment, index) => {
-      //         return (
-      //           <div>
-      //             <p
-      //               key={index}>
-      //               {comment}
-      //             </p>
-      //           </div>
-      //         )
-      //       })}
+        
+      
+      
+      
+      
+      
+      
+      // <div className="description-container">
+        //   <Card className="yp-card">
+        //     <CardActionArea>
+        //       <CardContent>
+        //         <Typography gutterBottom variant="h5">
+        //           {this.props.title}
+        //         </Typography>
+        //         <Typography component="p">
+        //           Location: {this.props.location}
+        //         </Typography>
+        //         <Typography component="p" color="textSecondary">
+        //           Description: {this.props.description}
+        //         </Typography>
+        //       </CardContent>
+        //     </CardActionArea>
+        //     <CardActions>
+        //       <Button size="medium" variant="contained" onClick={this.claim.bind(this)}>
+        //         <Typography>
+        //           Claim
+        //         </Typography>
+        //       </Button>
+        //     </CardActions>
+        //     <InputBase
+        //       placeholder="Add a comment"
+        //       onKeyPress={this.enterPressed.bind(this)}
+        //     />
 
-      //     </Card>
-      //   </div>
-
-      // </div>
-
+        //     {this.props.comments.map((comment, index) => {
+        //       return (
+        //         <div>
+        //           <p
+        //             key={index}>
+        //             {comment}
+        //           </p>
+        //         </div>
+        //       )
+        //     })}
 
 
       <Card className="yp-card">
