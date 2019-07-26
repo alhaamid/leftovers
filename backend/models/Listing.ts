@@ -33,7 +33,7 @@ const ListingSchema = new Schema({
     },
     comments: {
         type: [{type: String}],
-        default: ['What a comment', 'Yo yo yo yo', 'What a comment', 'Yo yo yo yo', 'What a comment', 'Yo yo yo yo', 'What a comment', 'Yo yo yo yo']
+        default: []
     },
 });
 
