@@ -128,7 +128,6 @@ export default class PostListing extends React.Component {
                     accept="image/*"
                     style={{ display: 'none' }}
                     id="raised-button-file"
-                    multiple
                     type="file"
                     onChange={this.updateFile}
                   />
