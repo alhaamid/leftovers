@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import InputBase from '@material-ui/core/InputBase';
+import Paper from '@material-ui/core/Paper';
 
 import './Listing.css';
 import { TextField } from '@material-ui/core';
@@ -123,21 +124,23 @@ class Listing extends React.Component {
             </Typography>
           </Button>
         </CardActions>
-        <InputBase
-            placeholder="Add a comment"
-            onKeyPress={this.enterPressed.bind(this)}
-          />
-          
-          {this.props.comments.map((comment, index) => {
-            return (
-              <div>
-                <p
+        <div className="comments-section">
+          {/* <Paper style={{padding: '3 2'}}> */}
+            <InputBase
+              placeholder="Add a comment"
+              onKeyPress={this.enterPressed.bind(this)}
+            />
+            {this.props.comments.map((comment, index) => {
+              return (                  
+                <p 
+                  // component="p"
                   key={index}>
                   {comment}
                 </p>
-              </div>
-            )
-          })}
+              )
+            })}
+          {/* </Paper> */}
+        </div>
       </Card>
     )
   }
