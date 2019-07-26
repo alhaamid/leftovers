@@ -35,95 +35,110 @@ class Listing extends React.Component {
 
   render() {
     return (
-      <div className="listing">
-        <div className="image-container">
+      // <div className="listing">
+      //   <div className="image-container">
 
-          <Card className="yp-card">
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                image={this.props.imageUrl}
-                title={this.props.title}
-                className="yp-image"
-              />
-            </CardActionArea>
-          </Card>
+      //     <Card className="yp-card1">
+      //       <CardActionArea>
+      //         <CardMedia
+      //           component="img"
+      //           image={this.props.imageUrl}
+      //           title={this.props.title}
+      //           className="yp-image"
+      //         />
+      //       </CardActionArea>
+      //     </Card>
 
-        </div>
+      //   </div>
 
-        <div className="description-container">
-          <Card className="yp-card">
-            <CardActionArea>
-              <CardContent>
-                <Typography gutterBottom variant="h5">
-                  {this.props.title}
-                </Typography>
-                <Typography component="p">
-                  Location: {this.props.location}
-                </Typography>
-                <Typography component="p" color="textSecondary">
-                  Description: {this.props.description}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="medium" variant="contained" onClick={this.claim.bind(this)}>
-                <Typography>
-                  Claim
-                </Typography>
-              </Button>
-            </CardActions>
-            <InputBase
-              placeholder="Add a comment"
-              onKeyPress={this.enterPressed.bind(this)}
-            />
+      //   <div className="description-container">
+      //     <Card className="yp-card">
+      //       <CardActionArea>
+      //         <CardContent>
+      //           <Typography gutterBottom variant="h5">
+      //             {this.props.title}
+      //           </Typography>
+      //           <Typography component="p">
+      //             Location: {this.props.location}
+      //           </Typography>
+      //           <Typography component="p" color="textSecondary">
+      //             Description: {this.props.description}
+      //           </Typography>
+      //         </CardContent>
+      //       </CardActionArea>
+      //       <CardActions>
+      //         <Button size="medium" variant="contained" onClick={this.claim.bind(this)}>
+      //           <Typography>
+      //             Claim
+      //           </Typography>
+      //         </Button>
+      //       </CardActions>
+      //       <InputBase
+      //         placeholder="Add a comment"
+      //         onKeyPress={this.enterPressed.bind(this)}
+      //       />
             
-            {this.props.comments.map((comment, index) => {
-              return (
-                <div>
-                  <p
-                    key={index}>
-                    {comment}
-                  </p>
-                </div>
-              )
-            })}
+      //       {this.props.comments.map((comment, index) => {
+      //         return (
+      //           <div>
+      //             <p
+      //               key={index}>
+      //               {comment}
+      //             </p>
+      //           </div>
+      //         )
+      //       })}
 
-          </Card>
-        </div>
+      //     </Card>
+      //   </div>
 
-      </div>
+      // </div>
 
 
 
-      // <Card className="yp-card">
-      //   <CardActionArea>
-      //     <CardMedia
-      //       component="img"
-      //       image={this.props.imageUrl}
-      //       title={this.props.title}
-      //       className="yp-image"
-      //     />
-      //     <CardContent>
-      //       <Typography gutterBottom variant="h5">
-      //         {this.props.title}
-      //       </Typography>
-      //       <Typography component="p" color="textSecondary">
-      //         Location: {this.props.location}
-      //       </Typography>
-      //       <Typography component="p" color="textSecondary">
-      //         Description: {this.props.description}
-      //       </Typography>
-      //     </CardContent>
-      //   </CardActionArea>
-      //   <CardActions>
-      //     <Button size="medium" variant="contained">
-      //       <Typography>
-      //         Claim as yours
-      //       </Typography>
-      //     </Button>
-      //   </CardActions>
-      // </Card>
+      <Card className="yp-card">
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            image={this.props.imageUrl}
+            title={this.props.title}
+            className="yp-image"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5">
+              {this.props.title}
+            </Typography>
+            <Typography component="p" color="textSecondary">
+              Location: {this.props.location}
+            </Typography>
+            <Typography component="p" color="textSecondary">
+              Description: {this.props.description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="medium" variant="contained">
+            <Typography>
+              Claim as yours
+            </Typography>
+          </Button>
+        </CardActions>
+        <InputBase
+            placeholder="Add a comment"
+            onKeyPress={this.enterPressed.bind(this)}
+          />
+          
+          {this.props.comments.map((comment, index) => {
+            return (
+              <div>
+                <p
+                  key={index}>
+                  {comment}
+                </p>
+              </div>
+            )
+          })}
+      </Card>
     )
   }
 }
