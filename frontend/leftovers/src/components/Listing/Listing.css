@@ -4,9 +4,6 @@
     display: table;
 
     margin-bottom: 30px;
-    
-    /* color: white;
-    background: #d32323; */
 }
 
 .image-container {
@@ -25,11 +22,9 @@
 }
 
 .yp-card {
-    /* width: 100%; */
     min-height: 245px;
     max-height: 245px;
-    margin-bottom: 100px;
-    /* background: red; */
+    /* margin-bottom: 30px; */
 }
 
 .yp-image {

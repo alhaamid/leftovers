@@ -6,12 +6,17 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 
 import './Listing.css';
 
 class Listing extends React.Component {
   constructor (props) {
     super(props);
+  }
+
+  claim() {
+
   }
 
   render() {
@@ -31,7 +36,7 @@ class Listing extends React.Component {
             <CardActions>
               <Button size="medium" variant="contained">
                 <Typography>
-                  Claim as yours
+                  Claim
                 </Typography>
               </Button>
             </CardActions>
@@ -56,6 +61,7 @@ class Listing extends React.Component {
             </CardActionArea>
           </Card>
         </div>
+
       </div>
 
       

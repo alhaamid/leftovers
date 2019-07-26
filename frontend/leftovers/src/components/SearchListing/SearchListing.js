@@ -2,6 +2,7 @@ import React from 'react';
 import findController from '../../services/findController';
 import Listing from '../Listing/Listing';
 import SearchBar from './SearchBar/SearchBar';
+
 import './SearchListing.css';
 
 class SearchListing extends React.Component {
@@ -36,10 +37,17 @@ class SearchListing extends React.Component {
     if (query == '') {
       this.refreshListings();
     } else {
+      this.findController.search(query)
+      .then(result => {
         this.setState({
-          allListings: this.findController.search(query)
+          allListings: result,
         });
+      })
     }
+  }
+
+  claim (listingId) {
+
   }
 
   render () {
@@ -50,13 +58,18 @@ class SearchListing extends React.Component {
         </div>
   
         {this.state.allListings.map((listing, index) => {
-          return <Listing
-            key={index}
-            imageUrl={listing.imageUrl}
-            title={listing.title}
-            location={listing.location}
-            description={listing.description}
-          />
+          return (
+            <div>
+              <Listing
+                key={index}
+                id={listing._id}
+                imageUrl={listing.imageUrl}
+                title={listing.title}
+                location={listing.location}
+                description={listing.description}
+              />
+            </div>
+          )
         })}
       </div>
     );
