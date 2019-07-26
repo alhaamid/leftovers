@@ -7,16 +7,30 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import InputBase from '@material-ui/core/InputBase';
 
 import './Listing.css';
+import { TextField } from '@material-ui/core';
 
 class Listing extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
   }
 
   claim() {
     this.props.claim(this.props._id);
+  }
+
+  enterPressed(event) {
+    const code = event.keyCode || event.which;
+    const comment = event.target.value;
+    if (code === 13) {
+      //TODO
+      
+      if (comment.length > 0) {
+        console.log(comment);
+      }
+    }
   }
 
   render() {
@@ -36,8 +50,8 @@ class Listing extends React.Component {
           </Card>
 
         </div>
-        
-        <div className="description-container">  
+
+        <div className="description-container">
           <Card className="yp-card">
             <CardActionArea>
               <CardContent>
@@ -59,12 +73,16 @@ class Listing extends React.Component {
                 </Typography>
               </Button>
             </CardActions>
+            <InputBase
+              placeholder="Add a comment"
+              onKeyPress={this.enterPressed.bind(this)}
+            />
           </Card>
         </div>
 
       </div>
 
-      
+
 
       // <Card className="yp-card">
       //   <CardActionArea>
