@@ -11,7 +11,7 @@
     height: max-content;
 
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .description-container {
@@ -19,16 +19,24 @@
     max-height: 300px;
     
     display: table-cell;
+    vertical-align: top;
 }
 
 .yp-card {
     min-height: 245px;
-    max-height: 245px;
+    max-height: fit-content;
+    margin-bottom: 30px;
+    width: 70%;
+}
+
+.yp-card1 {
+    /* min-height: 245px;
+    max-height: fit-content; */
     /* margin-bottom: 30px; */
 }
 
 .yp-image {
     max-width: 200px;
-    max-height: 300px;
-    object-fit: cover;
+    max-height: 200px;
+    /* object-fit: cover; */
 }
