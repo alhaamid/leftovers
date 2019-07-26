@@ -123,23 +123,30 @@ class Listing extends React.Component {
             </Typography>
           </Button>
         </CardActions>
-        <div className="comments-section">
-          {/* <Paper style={{padding: '3 2'}}> */}
+
+        {this.props.comments.length > 0 && (
+          <div className="comments-section">
             <InputBase
               placeholder="Add a comment"
               onKeyPress={this.enterPressed.bind(this)}
             />
             {this.props.comments.map((comment, index) => {
-              return (                  
+              return (
                 <p 
-                  // component="p"
                   key={index}>
                   {comment}
                 </p>
               )
             })}
-          {/* </Paper> */}
-        </div>
+          </div>
+        )}
+
+        {this.props.comments.length == 0 && (
+          <div className="comments-section">
+            <h5>No comments so far. Be the first to comment.</h5>
+          </div>
+        )}
+
       </Card>
     )
   }
