@@ -199,7 +199,7 @@ export default class PostListing extends React.Component {
             'aria-describedby': 'message-id',
           }}
           message={<span>Posted</span>}
-
+          color="green"
         />
 
       </div>
