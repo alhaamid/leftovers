@@ -86,9 +86,10 @@ export default class PostListing extends React.Component {
     event.preventDefault();
     const form = event.target;
     const data = new FormData(form);
+    let object = {};
     this.uploadFile()
     .then(url => {
-      var object = {imageUrl: url};
+      object['imageUrl'] = url;
       
       data.forEach((value, key) => { object[key] = value });
       this.findController.postListing(object)
