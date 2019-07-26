@@ -11,45 +11,6 @@ import findController from '../../services/findController';
 
 import './PostListing.css';
 
-<<<<<<< Updated upstream
-=======
-const useStyles = makeStyles(theme => ({
-  '@global': {
-    body: {
-      backgroundColor: theme.palette.common.white,
-    },
-  },
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: "#d32323",
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  post_button: {
-    margin: theme.spacing(3, 0, 2),
-    backgroundColor: "#d32323",
-    '&:hover': {
-      backgroundColor: red[900],
-    },
-  },
-  upload_button: {
-    backgroundColor: "#d32323",
-    color: theme.palette.common.white,
-    '&:hover': {
-      backgroundColor: red[900],
-    },
-  },
-}));
-
->>>>>>> Stashed changes
 export default class PostListing extends React.Component {
 
   constructor(props) {
