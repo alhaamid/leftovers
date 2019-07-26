@@ -11,6 +11,7 @@ class SearchListing extends React.Component {
     super(props);
     this.search = this.search.bind(this);
     this.claim = this.claim.bind(this);
+    this.post_comment = this.post_comment.bind(this);
 
     this.findController = new findController();
 
@@ -69,6 +70,24 @@ class SearchListing extends React.Component {
     });
   }
 
+  prepend(value, array) {
+    var newArray = array.slice();
+    newArray.unshift(value);
+    return newArray;
+  }
+
+  post_comment(listingId, listingComments, comment) {
+    // console.log(`Send the comment ${comment} to the backend with the id ${listingId}`)
+    let updatedComments = this.prepend(comment, listingComments);
+    // console.log(`This listings current comments: ${listingComments}`)
+    // console.log(`Updated comments: ${updatedComments}`)
+    
+    this.findController.putListing(listingId, {comments: updatedComments})
+    .then(_ => {
+      this.search(this.state.query)
+    })
+  }
+
   render () {
     return (
       <div className="page-container">
@@ -87,6 +106,7 @@ class SearchListing extends React.Component {
               description={listing.description}
               claim={this.claim}
               comments={listing.comments}
+              post_comment={this.post_comment}
             />
           )
         })}

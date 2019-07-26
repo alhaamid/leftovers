@@ -25,10 +25,9 @@ class Listing extends React.Component {
     const code = event.keyCode || event.which;
     const comment = event.target.value;
     if (code === 13) {
-      //TODO
-      
       if (comment.length > 0) {
         console.log(comment);
+        this.props.post_comment(this.props._id, this.props.comments, comment);
       }
     }
   }
@@ -77,7 +76,7 @@ class Listing extends React.Component {
               placeholder="Add a comment"
               onKeyPress={this.enterPressed.bind(this)}
             />
-            
+
             {this.props.comments.map((comment, index) => {
               return (
                 <div>
