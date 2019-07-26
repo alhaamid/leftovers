@@ -16,6 +16,11 @@ function App() {
         <Switch>
           <Route
               exact
+              path='/'
+              component={SearchListing}
+          />
+          <Route
+              exact
               path='/post'
               component={PostListing}
           />
