@@ -24,15 +24,6 @@ class findController {
             .then(res => { resolve(res.data); })
             .catch(rej => reject(rej))
         });
-
-        /*return [
-            {
-              imageUrl: "search",
-              location: "search",
-              title: "search",
-              description: "search",
-            }
-        ]*/
     }
 
     postListing(listingJSON) {

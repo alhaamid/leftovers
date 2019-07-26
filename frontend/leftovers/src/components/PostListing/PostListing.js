@@ -52,7 +52,6 @@ export default class PostListing extends React.Component {
       },
     }));
 
-    this.postRoute = 'http://localhost:4201/listing'
     this.findController = new findController();
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -64,27 +63,27 @@ export default class PostListing extends React.Component {
     const data = new FormData(form);
 
     var object = {};
-    data.forEach((value, key) => {object[key] = value});
+    data.forEach((value, key) => { object[key] = value });
 
     this.findController.postListing(object)
-    .then(newListing => {
-      alert('Posted!!')
-    })
+      .then(newListing => {
+        alert('Posted!!')
+      })
 
   }
 
   render() {
     return (
       <div className="page-container">
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={this.classes.paper}>
-          <Typography component="h1" variant="h5">
-            Post a New Listing
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <div className={this.classes.paper}>
+            <Typography component="h1" variant="h5">
+              Post a New Listing
           </Typography>
-          <form className={this.classes.form} onSubmit={this.handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={12}>
+            <form className={this.classes.form} onSubmit={this.handleSubmit}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={12}>
                   <TextField
                     name="title"
                     variant="outlined"
@@ -94,52 +93,52 @@ export default class PostListing extends React.Component {
                     label="Title"
                     autoFocus
                   />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="description"
-                  label="Listing Description"
-                  name="description"
-                  multiline={true}
-                  rows={4}
-                  rowsMax={8}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <input
-                  accept="image/*"
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="description"
+                    label="Listing Description"
+                    name="description"
+                    multiline={true}
+                    rows={4}
+                    rowsMax={8}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <input
+                    accept="image/*"
                     // className={classes.input}
                     style={{ display: 'none' }}
                     id="raised-button-file"
                     multiple
                     type="file"
-                />
-                <label htmlFor="raised-button-file">
-                  <Button 
-                    variant="raised" 
-                    component="span" 
-                    className={this.classes.upload_button}
-                  >
-                    Upload Images
+                  />
+                  <label htmlFor="raised-button-file">
+                    <Button
+                      variant="raised"
+                      component="span"
+                      className={this.classes.upload_button}
+                    >
+                      Upload Images
                   </Button>
-                </label> 
+                  </label>
+                </Grid>
               </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={this.classes.post_button}
-            >
-              Post
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={this.classes.post_button}
+              >
+                Post
             </Button>
-          </form>
-        </div>
-      </Container>
+            </form>
+          </div>
+        </Container>
       </div>
     );
   }

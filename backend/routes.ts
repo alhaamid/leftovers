@@ -51,17 +51,20 @@ routes.route('/listing/search/')
 });
 
 routes.route('/listing/:id')
-.get((req, res) => {
-    console.log('here1')
-    const id = req.params["id"]
-    listingController.getAListing(id)
+.put((req, res) => {
+    const id = req.params["id"];
+    console.log(id)
+    console.log('put request. body = ' + JSON.stringify(req.body))
+    console.log(req.body["isClaimed"])
+    listingController.updateAListing(id, req.body)
     .then(obj => {res.status(obj["code"]).send(obj["result"]);})
-    .catch(obj => {res.status(obj["code"]).send(obj["result"]);});
+    .catch(obj => {res.status(obj["code"]).send(obj["result"]);})
 });
 
-routes.route('/listing')
+routes.route('/listing/:id')
 .get((req, res) => {
-    listingController.getAllListings()
+    const id = req.params["id"]
+    listingController.getAListing(id)
     .then(obj => {res.status(obj["code"]).send(obj["result"]);})
     .catch(obj => {res.status(obj["code"]).send(obj["result"]);});
 });
@@ -72,4 +75,11 @@ routes.route('/listing/:id')
     listingController.deleteAListing(id)
     .then(obj => {res.status(obj["code"]).send(obj["result"]);})
     .catch(obj => {res.status(obj["code"]).send(obj["result"]);})
+});
+
+routes.route('/listing')
+.get((req, res) => {
+    listingController.getAllListings()
+    .then(obj => {res.status(obj["code"]).send(obj["result"]);})
+    .catch(obj => {res.status(obj["code"]).send(obj["result"]);});
 });
