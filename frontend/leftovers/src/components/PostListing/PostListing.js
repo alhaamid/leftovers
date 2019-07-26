@@ -149,6 +149,7 @@ export default class PostListing extends React.Component {
                       variant="raised"
                       component="span"
                       className={this.classes.upload_button}
+                      style={{marginBottom: '15px'}}
                     >
                       Upload Image
                   </Button>
