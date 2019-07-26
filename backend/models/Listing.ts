@@ -18,7 +18,7 @@ const ListingSchema = new Schema({
     },
     imageUrl: {
         type: String,
-        default: 'https://images-na.ssl-images-amazon.com/images/I/51z376z5iBL._SL1200_.jpg',
+        default: 'https://greatinspector.com/wp-content/uploads/2016/12/yelp-burst-logo.png',
     },
     dateCreated: {
         type: Date,
