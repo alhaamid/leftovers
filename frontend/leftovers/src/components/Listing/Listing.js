@@ -108,9 +108,9 @@ class Listing extends React.Component {
             <Typography gutterBottom variant="h5">
               {this.props.title}
             </Typography>
-            <Typography component="p" color="textSecondary">
+            {/* <Typography component="p" color="textSecondary">
               Location: {this.props.location}
-            </Typography>
+            </Typography> */}
             <Typography component="p" color="textSecondary">
               Description: {this.props.description}
             </Typography>
