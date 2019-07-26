@@ -8,8 +8,19 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import InputBase from '@material-ui/core/InputBase';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { red } from '@material-ui/core/colors';
 
 import './Listing.css';
+
+const ColorButton = withStyles(theme => ({
+  root: {
+    backgroundColor: "#d32323",
+    '&:hover': {
+      backgroundColor: red[900],
+    },
+  },
+}))(Button);
 
 class Listing extends React.Component {
   constructor(props) {
@@ -117,11 +128,18 @@ class Listing extends React.Component {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="medium" variant="contained" onClick={this.claim.bind(this)}>
+          {/* <Button size="medium" variant="contained" onClick={this.claim.bind(this)}>
             <Typography>
               Claim as yours
             </Typography>
-          </Button>
+          </Button> */}
+          <ColorButton 
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={this.claim.bind(this)}>
+            Claim as yours
+          </ColorButton>
         </CardActions>
 
         {this.props.comments.length > 0 && (
