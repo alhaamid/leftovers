@@ -1,15 +1,13 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import AddCircleOutlineOutlined from '@material-ui/icons/AddCircleOutlineOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { red } from '@material-ui/core/colors';
-import axios from 'axios';
+import findController from '../../services/findController';
 
 import './PostListing.css';
 
@@ -55,6 +53,7 @@ export default class PostListing extends React.Component {
     }));
 
     this.postRoute = 'http://localhost:4201/listing'
+    this.findController = new findController();
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -66,11 +65,10 @@ export default class PostListing extends React.Component {
 
     var object = {};
     data.forEach((value, key) => {object[key] = value});
-    axios.post(this.postRoute,  object )
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
-      alert('Posted!')
+
+    this.findController.postListing(object)
+    .then(newListing => {
+      alert('Posted!!')
     })
 
   }

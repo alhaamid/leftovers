@@ -17,15 +17,31 @@ class findController {
         })
     }
 
-    search () {
-        return [
+    search (searchQuery) {
+        const url = `${this.backendUrl}/listing/search/?q=${searchQuery}`;
+        return new Promise ((resolve, reject) => {
+            axios.get(url)
+            .then(res => { resolve(res.data); })
+            .catch(rej => reject(rej))
+        });
+
+        /*return [
             {
               imageUrl: "search",
               location: "search",
               title: "search",
               description: "search",
             }
-        ]
+        ]*/
+    }
+
+    postListing(listingJSON) {
+        const url = `${this.backendUrl}/listing`;
+        return new Promise((resolve, reject) => {
+            axios.post(url, listingJSON)
+            .then(res => { resolve(res.data) })
+            .catch(rej => reject(rej))
+        });
     }
 }
 
