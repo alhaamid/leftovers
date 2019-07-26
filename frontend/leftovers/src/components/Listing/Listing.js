@@ -117,7 +117,7 @@ class Listing extends React.Component {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="medium" variant="contained">
+          <Button size="medium" variant="contained" onClick={this.claim.bind(this)}>
             <Typography>
               Claim as yours
             </Typography>
