@@ -77,10 +77,7 @@ class SearchListing extends React.Component {
   }
 
   post_comment(listingId, listingComments, comment) {
-    // console.log(`Send the comment ${comment} to the backend with the id ${listingId}`)
     let updatedComments = this.prepend(comment, listingComments);
-    // console.log(`This listings current comments: ${listingComments}`)
-    // console.log(`Updated comments: ${updatedComments}`)
     
     this.findController.putListing(listingId, {comments: updatedComments})
     .then(_ => {

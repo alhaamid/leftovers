@@ -8,10 +8,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import InputBase from '@material-ui/core/InputBase';
-import Paper from '@material-ui/core/Paper';
 
 import './Listing.css';
-import { TextField } from '@material-ui/core';
 
 class Listing extends React.Component {
   constructor(props) {
@@ -29,6 +27,7 @@ class Listing extends React.Component {
       if (comment.length > 0) {
         console.log(comment);
         this.props.post_comment(this.props._id, this.props.comments, comment);
+        event.target.value = '';
       }
     }
   }
