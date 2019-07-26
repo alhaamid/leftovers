@@ -143,6 +143,10 @@ class Listing extends React.Component {
 
         {this.props.comments.length == 0 && (
           <div className="comments-section">
+            <InputBase
+              placeholder="Add a comment"
+              onKeyPress={this.enterPressed.bind(this)}
+            />
             <h5>No comments so far. Be the first to comment.</h5>
           </div>
         )}
