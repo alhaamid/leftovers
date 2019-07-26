@@ -15,6 +15,7 @@ class SearchListing extends React.Component {
 
     this.state = {
       allListings: [],
+      query: '',
     };
 
     this.refreshListings();
@@ -34,6 +35,9 @@ class SearchListing extends React.Component {
   }
 
   search (query) {
+    this.setState({
+      query: query,
+    });
     if (query == '') {
       this.refreshListings();
     } else {
@@ -47,7 +51,10 @@ class SearchListing extends React.Component {
   }
 
   claim (listingId) {
-
+    this.findController.claim(listingId)
+    .then(__ => {
+      this.search(this.state.query);
+    })
   }
 
   render () {
@@ -59,16 +66,14 @@ class SearchListing extends React.Component {
   
         {this.state.allListings.map((listing, index) => {
           return (
-            <div>
-              <Listing
-                key={index}
-                id={listing._id}
-                imageUrl={listing.imageUrl}
-                title={listing.title}
-                location={listing.location}
-                description={listing.description}
-              />
-            </div>
+            <Listing
+              key={index}
+              id={listing._id}
+              imageUrl={listing.imageUrl}
+              title={listing.title}
+              location={listing.location}
+              description={listing.description}
+            />
           )
         })}
       </div>
