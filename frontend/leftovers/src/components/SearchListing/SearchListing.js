@@ -22,12 +22,18 @@ class SearchListing extends React.Component {
     this.refreshListings();
   }
 
+  mySetState (newState) {
+    this.setState(newState);
+
+    this.setState({
+      allListings: this.sort_by_key(this.state.allListings, 'dateCreated'),
+    })
+  }
+
   refreshListings () {
     this.findController.getAvailableListings()
     .then(listings => {
-      this.setState({
-        allListings: listings,
-      })
+      this.mySetState({allListings: listings,})
     })
   }
 
@@ -36,17 +42,13 @@ class SearchListing extends React.Component {
   }
 
   search (query) {
-    this.setState({
-      query: query,
-    });
+    this.mySetState({query: query,});
     if (query == '') {
       this.refreshListings();
     } else {
       this.findController.search(query)
       .then(result => {
-        this.setState({
-          allListings: result,
-        });
+        this.mySetState({allListings: result,});
       })
     }
   }
@@ -58,6 +60,13 @@ class SearchListing extends React.Component {
     .then(__ => {
       this.search(this.state.query);
     })
+  }
+
+  sort_by_key (array, key) {
+    return array.sort( (a, b) => {
+      var x = a[key]; var y = b[key];
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
   }
 
   render () {
