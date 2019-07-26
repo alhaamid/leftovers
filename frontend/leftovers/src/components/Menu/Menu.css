@@ -51,6 +51,7 @@ a {
 #titleContent h2 {
   text-transform: uppercase;
   font-family: 'Roboto';
+  padding-left: 55%;
 }
 
 #navbarContent {
