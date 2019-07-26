@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { red } from '@material-ui/core/colors';
 import findController from '../../services/findController';
+import {storage} from '../../firebase';
 
 import './PostListing.css';
 
@@ -16,21 +17,16 @@ export default class PostListing extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      selectedFile: '',
+    }
+
     this.classes = makeStyles(theme => ({
-      '@global': {
-        body: {
-          // backgroundColor: theme.palette.common.white,
-        },
-      },
       paper: {
         marginTop: theme.spacing(8),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-      },
-      avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: "#d32323",
       },
       form: {
         width: '100%', // Fix IE 11 issue.
@@ -57,23 +53,50 @@ export default class PostListing extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  updateFile (event) {
+  updateFile = event => {
     console.log(event.target.files[0]);
+    this.setState({
+      selectedFile: event.target.files[0],
+    })
+  }
+
+  uploadFile = () => {
+    return new Promise ((resolve, reject) => {
+      const file = this.state.selectedFile;
+      const uploadTask = storage.ref(`images/${file.name}`).put(file);
+      uploadTask.on('state_changed', 
+      (snapshot) => {
+      }, 
+      (error) => {
+        reject(error);
+      }, 
+      (complete) => {
+        storage.ref('images').child(file.name).getDownloadURL()
+        .then(url => {
+          resolve(url);
+        })
+        .catch(err => reject(err))
+      })
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const data = new FormData(form);
+    this.uploadFile()
+    .then(url => {
+      var object = {imageUrl: url};
+      data.forEach((value, key) => { object[key] = value });
 
-    var object = {};
-    data.forEach((value, key) => { object[key] = value });
-
-    this.findController.postListing(object)
-      .then(newListing => {
-        alert('Posted!!')
-      })
-
+      this.findController.postListing(object)
+        .then(newListing => {
+          alert('Posted!!')
+        })
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 
   render() {
@@ -104,7 +127,7 @@ export default class PostListing extends React.Component {
                     required
                     fullWidth
                     id="description"
-                    label="Listing Description"
+                    label="Description e.g. location found"
                     name="description"
                     multiline={true}
                     rows={4}
@@ -119,7 +142,7 @@ export default class PostListing extends React.Component {
                     id="raised-button-file"
                     multiple
                     type="file"
-                    onChange={this.updateFile.bind(this)}
+                    onChange={this.updateFile}
                   />
                   <label htmlFor="raised-button-file">
                     <Button
@@ -127,7 +150,7 @@ export default class PostListing extends React.Component {
                       component="span"
                       className={this.classes.upload_button}
                     >
-                      Upload Images
+                      Upload Image
                   </Button>
                   </label>
                 </Grid>
