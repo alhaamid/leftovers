@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './Menu.css';
 
-const appName = 'Leftovers';
+const appName = 'Lost & Found';
 const postListingUrl = '/post';
 const searchListingUrl = '/search';
 
@@ -11,8 +11,9 @@ function Menu() {
     
     <div id="header">
       <div id="titleContainer">
-        <div id="titleContent">
-          <h2> {appName} </h2>
+        <div id="titleContent" >
+          <a href="/"><img src="yelp_logo_1.png" alt="logo" /></a>
+          <h2><a href="/">{appName} </a> </h2>
         </div>
       </div>
 

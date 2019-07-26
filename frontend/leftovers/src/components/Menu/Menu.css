@@ -7,13 +7,22 @@ a {
   color: inherit;
 }
 
-#header {
-  width: 100%;
+#header img {
+  float: left;
+  width: 50%;
+  height: 50%;
+}
 
+#header{
+  width: 100%;
   display: table;
   
   color: white;
   background: #d32323;
+}
+
+#header a{
+  text-decoration: none;
 }
 
 #titleContainer {
@@ -36,6 +45,7 @@ a {
 #titleContent {
   float: left;
   margin-left: 50px;
+  margin-top: 2%;
 }
 
 #titleContent h2 {
