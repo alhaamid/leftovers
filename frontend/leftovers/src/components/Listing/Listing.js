@@ -16,7 +16,7 @@ class Listing extends React.Component {
   }
 
   claim() {
-
+    this.props.claim(this.props._id);
   }
 
   render() {
@@ -34,7 +34,7 @@ class Listing extends React.Component {
               />
             </CardActionArea>
             <CardActions>
-              <Button size="medium" variant="contained">
+              <Button size="medium" variant="contained" onClick={this.claim.bind(this)}>
                 <Typography>
                   Claim
                 </Typography>

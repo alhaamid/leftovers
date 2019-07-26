@@ -10,6 +10,7 @@ class SearchListing extends React.Component {
   constructor (props) {
     super(props);
     this.search = this.search.bind(this);
+    this.claim = this.claim.bind(this);
 
     this.findController = new findController();
 
@@ -51,7 +52,9 @@ class SearchListing extends React.Component {
   }
 
   claim (listingId) {
-    this.findController.claim(listingId)
+    this.findController.putListing(listingId, {
+      isClaimed: true,
+    })
     .then(__ => {
       this.search(this.state.query);
     })
@@ -68,11 +71,12 @@ class SearchListing extends React.Component {
           return (
             <Listing
               key={index}
-              id={listing._id}
+              _id={listing._id}
               imageUrl={listing.imageUrl}
               title={listing.title}
               location={listing.location}
               description={listing.description}
+              claim={this.claim}
             />
           )
         })}
