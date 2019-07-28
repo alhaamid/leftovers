@@ -9,7 +9,7 @@ const APP = express();
 const PORT = process.env.PORT || 4201;
 
 const DB_NAME: string = 'leftovers';
-const CLOUD_MONGO_URL: string = `mongodb+srv://haamid:haamid@leftovers-pre0a.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
+const CLOUD_MONGO_URL: string = ``;
 const DB_URI: string = CLOUD_MONGO_URL;
 
 mongoose.connect(DB_URI, (err: MongoError) => {
